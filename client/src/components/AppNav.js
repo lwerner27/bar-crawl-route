@@ -25,13 +25,14 @@ export default class AppNav extends Component {
     }
 
   render() {
+    let { navStyles } = styles
     return (
         <div>
-            <Navbar color="dark" dark expand="md">
+            <Navbar style={ navStyles } dark expand="md">
                 <NavbarBrand href="/">Bar Crawl Routes</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
+                    <Nav style={ navStyles } className="ml-auto" navbar>
                         <NavItem>
                             <NavLink href="/login">Login</NavLink>
                         </NavItem>
@@ -41,4 +42,10 @@ export default class AppNav extends Component {
         </div>
     )
   }
+}
+
+const styles = {
+    navStyles: {
+        backgroundColor: "#009ddc"
+    }
 }
