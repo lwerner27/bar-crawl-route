@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import AppNav from "./components/AppNav"
 import Login from "./pages/Login"
+import Register from './pages/Register';
 
 
 class App extends Component {
@@ -26,7 +27,8 @@ class App extends Component {
       <div className="App">
         <AppNav />
         <Router>
-          <Route to="/login" component={Login} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
         </Router>
       </div>
     );
