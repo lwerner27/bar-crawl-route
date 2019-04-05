@@ -11,8 +11,7 @@ import {
     Label, 
     Modal, 
     ModalBody, 
-    ModalHeader, 
-    ModalFooter } from 'reactstrap'
+    ModalHeader } from 'reactstrap'
 
 export default class CreateRoute extends Component {
     constructor(props) {
@@ -33,6 +32,7 @@ export default class CreateRoute extends Component {
         }
         this.toggle = this.toggle.bind(this);
         this.handleChange = this.handleChange.bind(this)
+        this.searchPlaces = this.searchPlaces.bind(this)
     }
 
     toggle() {
@@ -45,6 +45,10 @@ export default class CreateRoute extends Component {
         this.setState({
             [event.target.id]: event.target.value
         })
+    }
+
+    searchPlaces() {
+        let encodedText = encodeURIComponent(this.state.searchText))
     }
 
     render() {
@@ -86,13 +90,11 @@ export default class CreateRoute extends Component {
                                 <Label for="searchText">Search</Label>
                                 <Input onChange={this.handleChange} type="text" name="searchText" id="searchText"></Input>
                             </FormGroup>
+                            <Button onClick={this.searchPlaces} color="primary">Search</Button>
                         </Form>
                     </ModalBody>
-                    <ModalFooter>
-                        <Button color="primary" onClick={this.toggle} block>Do Something</Button>
-                    </ModalFooter>
                 </Modal>
-                
+
             </Container>
         )
     }
