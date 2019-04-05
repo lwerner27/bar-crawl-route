@@ -34,6 +34,9 @@ export default class AppNav extends Component {
                         <NavItem>
                             <NavLink href="/login">Login</NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink href="/create/route">Add Route</NavLink>
+                        </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>
