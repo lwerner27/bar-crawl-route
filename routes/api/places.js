@@ -13,7 +13,7 @@ router.get("/search/:searchLoc/:searchTerm", (req, res) => {
         term: req.params.searchTerm,
         location: req.params.searchLoc,
         radius: 10000,
-        categories: "bars, breweries"
+        categories: "bars,breweries"
     };
       
     const client = yelp.client(yelpKey);
