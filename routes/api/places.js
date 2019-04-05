@@ -17,11 +17,13 @@ router.get("/search/:searchLoc/:searchTerm", (req, res) => {
     };
       
     const client = yelp.client(yelpKey);
-    client.search(searchRequest).then(response => {
+
+    client.search(searchRequest)
+    .then(response => {
         res.json(response)
-      }).catch(e => {
+    }).catch(e => {
         res.json(e)
-      });
+    });
 })
 
 module.exports = router
