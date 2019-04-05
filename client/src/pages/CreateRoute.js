@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from "axios"
 import states from "../Shared/States"
 import { 
     Container, 
@@ -28,7 +29,9 @@ export default class CreateRoute extends Component {
             state: null,
             description: null,
             stops: [],
-            searchText: ""
+            searchCity: "",
+            searchText: "",
+
         }
         this.toggle = this.toggle.bind(this);
         this.handleChange = this.handleChange.bind(this)
@@ -43,12 +46,17 @@ export default class CreateRoute extends Component {
 
     handleChange(event) {
         this.setState({
-            [event.target.id]: event.target.value
+            [event.target.id]: event.target.value.trim().toLowerCase()
         })
     }
 
     searchPlaces() {
-        let encodedText = encodeURIComponent(this.state.searchText)
+        let searchLoc = encodeURIComponent(this.state.searchCity)
+        let searchTerm = encodeURIComponent(this.state.searchText)
+        axios.get(`/api/places/search/${searchLoc}/${searchTerm}`)
+        .then(res => {
+            console.log(res.data)
+        })
     }
 
     render() {
@@ -86,6 +94,10 @@ export default class CreateRoute extends Component {
                     <ModalHeader toggle={this.toggle}>Search For Stop</ModalHeader>
                     <ModalBody>
                         <Form>
+                            <FormGroup>
+                                <Label for="searchCity">City to Search</Label>
+                                <Input onChange={this.handleChange} type="text" name="searchCity" id="searchCity" placeholder="Saint Paul, MN"></Input>
+                            </FormGroup>
                             <FormGroup>
                                 <Label for="searchText">Search</Label>
                                 <Input onChange={this.handleChange} type="text" name="searchText" id="searchText"></Input>
