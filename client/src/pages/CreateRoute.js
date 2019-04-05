@@ -81,6 +81,7 @@ export default class CreateRoute extends Component {
                             <FormGroup>
                                 <Label for="state">State:</Label>
                                 <Input type="select" name="state" id="state">
+                                    <option>Select a State</option>
                                     {states}
                                 </Input>
                             </FormGroup>
