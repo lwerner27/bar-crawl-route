@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
 import states from "../Shared/States"
-import { Container, Row, Col, Button, Form, FormGroup, Input, Label } from 'reactstrap'
+import { 
+    Container, 
+    Row, 
+    Col, 
+    Button, 
+    Form, 
+    FormGroup, 
+    Input, 
+    Label, 
+    Modal, 
+    ModalBody, 
+    ModalHeader, 
+    ModalFooter } from 'reactstrap'
 
 export default class CreateRoute extends Component {
     constructor(props) {
@@ -15,16 +27,32 @@ export default class CreateRoute extends Component {
             name: null,
             city: null,
             state: null,
-            description: null
+            description: null,
+            stops: [],
+            searchText: ""
         }
+        this.toggle = this.toggle.bind(this);
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    toggle() {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
+    }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.id]: event.target.value
+        })
     }
 
     render() {
-        let states = this.state.states.map(element => <option>{element}</option>)
+        let states = this.state.states.map((element, index) => <option key={index}>{element}</option>)
         return (
             <Container>
                 <Row>
-                    <Col md="6">
+                    <Col sm="12" md="3">
                         <br/>
                         <Form>
                             <FormGroup>
@@ -45,10 +73,26 @@ export default class CreateRoute extends Component {
                                 <Label for="description">Text Area</Label>
                                 <Input type="textarea" name="description" id="description" />
                             </FormGroup>
-                            <Button color="warning" block>Add Stop</Button>
+                            <Button color="warning" block onClick={this.toggle}>Add Stop</Button>
                         </Form>
                     </Col>
                 </Row>
+
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Search For Stop</ModalHeader>
+                    <ModalBody>
+                        <Form>
+                            <FormGroup>
+                                <Label for="searchText">Search</Label>
+                                <Input onChange={this.handleChange} type="text" name="searchText" id="searchText"></Input>
+                            </FormGroup>
+                        </Form>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="primary" onClick={this.toggle} block>Do Something</Button>
+                    </ModalFooter>
+                </Modal>
+                
             </Container>
         )
     }
