@@ -31,6 +31,7 @@ export default class CreateRoute extends Component {
             stops: [],
             searchCity: "",
             searchText: "",
+            searchResults: null,
 
         }
         this.toggle = this.toggle.bind(this);
@@ -55,7 +56,9 @@ export default class CreateRoute extends Component {
         let searchTerm = encodeURIComponent(this.state.searchText)
         axios.get(`/api/places/search/${searchLoc}/${searchTerm}`)
         .then(res => {
-            console.log(res.data)
+            this.setState({
+                searchResults: res.data.jsonBody.businesses
+            })
         })
     }
 
