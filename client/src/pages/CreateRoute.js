@@ -48,7 +48,7 @@ export default class CreateRoute extends Component {
     }
 
     searchPlaces() {
-        let encodedText = encodeURIComponent(this.state.searchText))
+        let encodedText = encodeURIComponent(this.state.searchText)
     }
 
     render() {
