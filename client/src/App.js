@@ -4,6 +4,7 @@ import './App.css';
 import AppNav from "./components/AppNav"
 import Login from "./pages/Login"
 import Register from './pages/Register';
+import CreateRoute from './pages/CreateRoute';
 
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
         <Router>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/create/route" component={CreateRoute} />
         </Router>
       </div>
     );
