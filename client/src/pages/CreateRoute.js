@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios"
 import states from "../Shared/States"
+import ResultsDisplay from "../components/ResultsDisplay"
 import { 
     Container, 
     Row, 
@@ -12,7 +13,8 @@ import {
     Label, 
     Modal, 
     ModalBody, 
-    ModalHeader } from 'reactstrap'
+    ModalHeader,
+    CardGroup } from 'reactstrap'
 
 export default class CreateRoute extends Component {
     constructor(props) {
@@ -94,7 +96,7 @@ export default class CreateRoute extends Component {
                     </Col>
                 </Row>
 
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} size="lg">
                     <ModalHeader toggle={this.toggle}>Search For Stop</ModalHeader>
                     <ModalBody>
                         <Form>
@@ -108,6 +110,12 @@ export default class CreateRoute extends Component {
                             </FormGroup>
                             <Button onClick={this.searchPlaces} color="primary">Search</Button>
                         </Form>
+                        <br />
+                        <hr />
+                        <br />
+                        <CardGroup>
+                            <ResultsDisplay results={this.state.searchResults} />
+                        </CardGroup>
                     </ModalBody>
                 </Modal>
 
