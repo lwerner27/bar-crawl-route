@@ -39,6 +39,7 @@ export default class CreateRoute extends Component {
         this.toggle = this.toggle.bind(this);
         this.handleChange = this.handleChange.bind(this)
         this.searchPlaces = this.searchPlaces.bind(this)
+        this.addStop = this.addStop.bind(this)
     }
 
     toggle() {
@@ -61,6 +62,14 @@ export default class CreateRoute extends Component {
             this.setState({
                 searchResults: res.data.jsonBody.businesses
             })
+        })
+    }
+
+    addStop(obj) {
+        let { stops } = this.state
+        stops.push(obj)
+        this.setState(stops, () => {
+            console.log(this.state.stops)
         })
     }
 
@@ -114,7 +123,7 @@ export default class CreateRoute extends Component {
                         <hr />
                         <br />
                         <CardGroup>
-                            <ResultsDisplay results={this.state.searchResults} />
+                            <ResultsDisplay clickHandler={this.addStop} results={this.state.searchResults} />
                         </CardGroup>
                     </ModalBody>
                 </Modal>
