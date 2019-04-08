@@ -1,17 +1,21 @@
 import React from 'react';
 import { Col, Card, CardImg, CardText, CardBody, CardTitle, Button } from 'reactstrap';
     
-export default function ResultsDisplay({ results }) {
+export default function ResultsDisplay({ results, clickHandler }) {
     let resultCards = <div></div>
     if (results) {
-        resultCards = results.map((result, index) => (
+        resultCards = results.map(({ image_url, name, location: { address1, city, state} } , index) => (
             <Col key={index}>
                 <Card style={styles.card}>
-                    <CardImg src={result.image_url} style={styles.img} />
+                    <CardImg src={image_url} style={styles.img} />
                     <CardBody>
-                        <CardTitle>{result.name}</CardTitle>
-                        <CardText>{`${result.location.address1}\n${result.location.city}, ${result.location.state}`}</CardText>
-                        <Button>Add Stop!</Button>
+                        <CardTitle>{name}</CardTitle>
+                        <CardText>{`${address1}\n${city}, ${state}`}</CardText>
+                        <Button 
+                            onClick={() => {clickHandler({name, image_url, address1, city, state})}}
+                        >
+                            Add Stop!
+                        </Button>
                     </CardBody>
                 </Card>
             </Col>
