@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from "axios"
 import states from "../Shared/States"
 import ResultsDisplay from "../components/ResultsDisplay"
+import StopList from '../components/StopList'
 import { 
     Container, 
     Row, 
@@ -78,7 +79,7 @@ export default class CreateRoute extends Component {
         return (
             <Container>
                 <Row>
-                    <Col sm="12" md="3">
+                    <Col sm="12" md="4">
                         <br/>
                         <Form>
                             <FormGroup>
@@ -102,6 +103,11 @@ export default class CreateRoute extends Component {
                             </FormGroup>
                             <Button color="warning" block onClick={this.toggle}>Add Stop</Button>
                         </Form>
+                    </Col>
+
+                    <Col sm="12" md="4">
+                        <br/>
+                        <StopList stops={this.state.stops}/>
                     </Col>
                 </Row>
 
