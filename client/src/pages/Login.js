@@ -16,6 +16,7 @@ export default class Login extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
         this.toggle = this.toggle.bind(this)
+        this.submitRegistration = this.submitRegistration.bind(this)
     }
 
     handleChange(event) {
@@ -32,6 +33,15 @@ export default class Login extends Component {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
+    }
+
+    submitRegistration() {
+        let { newUsername, newPassword, confirmPassword } = this.state
+        if (newPassword === confirmPassword) {
+            console.log(newUsername, newPassword)
+        } else {
+            console.log("Your passwords don't match.")
+        }
     }
 
     render() {
@@ -54,7 +64,7 @@ export default class Login extends Component {
                         </Form>
                     </Col>
                 </Row>
-                <RegisterModal handleChange={this.handleChange} toggle={this.toggle} isOpen={this.state.modal}/>
+                <RegisterModal handleChange={this.handleChange} toggle={this.toggle} isOpen={this.state.modal} submitForm={this.submitRegistration}/>
             </Container>
         )
     }
