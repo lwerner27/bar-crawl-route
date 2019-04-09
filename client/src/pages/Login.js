@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import RegisterModal from "../components/RegisterModal"
 
 export default class Login extends Component {
     constructor(props) {
         super(props) 
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            newUsername: "",
+            newPassword: "",
+            confirmPassword: "",
+            modal: false,
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.toggle = this.toggle.bind(this)
     }
 
     handleChange(event) {
@@ -20,6 +26,12 @@ export default class Login extends Component {
 
     handleClick() {
         console.log(this.state)
+    }
+    
+    toggle() {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
     }
 
     render() {
@@ -38,10 +50,11 @@ export default class Login extends Component {
                                 <Input type="password" name="password" id="password" placeholder="password placeholder" onChange={this.handleChange}/>
                             </FormGroup>
                             <Button color="warning" block onClick={this.handleClick}>Submit</Button>
-                            <Button color="success" block>Register</Button>
+                            <Button color="success" block onClick={this.toggle}>Register</Button>
                         </Form>
                     </Col>
                 </Row>
+                <RegisterModal handleChange={this.handleChange} toggle={this.toggle} isOpen={this.state.modal}/>
             </Container>
         )
     }
