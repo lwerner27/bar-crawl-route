@@ -79,7 +79,7 @@ export default class CreateRoute extends Component {
         return (
             <Container>
                 <Row>
-                    <Col sm="12" md="4">
+                    <Col sm="12" md="6">
                         <br/>
                         <Form>
                             <FormGroup>
@@ -101,11 +101,12 @@ export default class CreateRoute extends Component {
                                 <Label for="description">Text Area</Label>
                                 <Input type="textarea" name="description" id="description" />
                             </FormGroup>
-                            <Button color="warning" block onClick={this.toggle}>Add Stop</Button>
+                            <Button color="primary" block onClick={this.toggle}>Add Stop</Button>
+                            <Button color="warning" block>View Route</Button>
                         </Form>
                     </Col>
 
-                    <Col sm="12" md="4">
+                    <Col sm="12" md="6">
                         <br/>
                         <StopList stops={this.state.stops}/>
                     </Col>
@@ -125,9 +126,7 @@ export default class CreateRoute extends Component {
                             </FormGroup>
                             <Button onClick={this.searchPlaces} color="primary">Search</Button>
                         </Form>
-                        <br />
                         <hr />
-                        <br />
                         <CardGroup>
                             <ResultsDisplay clickHandler={this.addStop} results={this.state.searchResults} />
                         </CardGroup>
