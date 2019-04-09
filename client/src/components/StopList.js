@@ -15,10 +15,10 @@ export default function StopList({ stops }) {
                         <ListGroupItemHeading>{stop.name}</ListGroupItemHeading>
                         <ListGroupItemText>{`${stop.address1}\n ${stop.city}, ${stop.state}`}</ListGroupItemText>
                     </div>
-                </div>
-                <div className="btn-container" style={btnContainer}>
-                    <Button color="danger">Move Up</Button>
-                    <Button color="danger">Move Down</Button>
+                    <div className="btn-container" style={btnContainer}>
+                        <Button color="success"><i className="fas fa-arrow-alt-circle-up"></i></Button>
+                        <Button color="info"><i className="fas fa-arrow-alt-circle-down"></i></Button>
+                    </div>
                 </div>
             </ListGroupItem>
         ))
@@ -32,7 +32,8 @@ export default function StopList({ stops }) {
 
 const styles = {
     itemsContainer: {
-        display: "flex"
+        display: "flex",
+        justifyContent: "space-between"
     },
     stopImg: {
         objectFit: "cover",
@@ -41,7 +42,6 @@ const styles = {
     },
     itemContainer: {
         flexDirection: "column",
-        paddingLeft: 15
     },
     imgContainer: {
         height: "100px",
@@ -49,7 +49,7 @@ const styles = {
     },
     btnContainer: {
         display: "flex",
+        flexDirection: "column",
         justifyContent: "space-between",
-        marginTop: 10
     }
 }
