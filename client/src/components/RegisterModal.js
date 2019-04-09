@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap'
 
-export default function RegisterModal({ handleChange, toggle, isOpen }) {
+export default function RegisterModal({ handleChange, toggle, isOpen, submitForm }) {
     return (
         <Modal isOpen={isOpen} toggle={toggle}>
             <ModalHeader toggle={toggle}>
@@ -25,7 +25,7 @@ export default function RegisterModal({ handleChange, toggle, isOpen }) {
                         <Input onChange={handleChange} type="password" name="confirmPassword" id="confirmPassword" />
                     </FormGroup>
 
-                    <Button color="primary">Submit</Button>
+                    <Button onClick={submitForm} color="primary">Submit</Button>
                 </Form>
             </ModalBody>
         </Modal>
