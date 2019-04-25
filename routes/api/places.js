@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const axios = require("axios")
-const googleKey = process.env.GOOGLE_KEY
 const yelpKey = process.env.YELP_KEY
 const yelp = require("yelp-fusion")
 
